@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>恋爱忍耐度测试</title>
+    <title>恋爱回应力测试</title>
     <style>
         * { box-sizing: border-box; }
+
         body {
             margin: 0;
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
             background: #f8efef;
             color: #222;
         }
+
         .wrap {
             max-width: 860px;
             margin: 40px auto;
             padding: 0 16px 40px;
         }
+
         .card {
             background: #fff;
             border-radius: 28px;
             padding: 36px 28px;
-            box-shadow: 0 8px 30px rgba(0,0,0,.04);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
         }
+
         h1 {
             margin: 0;
             text-align: center;
@@ -31,6 +35,7 @@
             font-weight: 800;
             letter-spacing: 1px;
         }
+
         .sub {
             margin: 14px 0 30px;
             text-align: center;
@@ -38,15 +43,18 @@
             font-size: 16px;
             line-height: 1.7;
         }
+
         .question {
             margin-bottom: 26px;
         }
+
         .q-title {
             font-size: 18px;
             font-weight: 700;
             line-height: 1.6;
             margin-bottom: 14px;
         }
+
         .option {
             display: flex;
             align-items: center;
@@ -57,15 +65,26 @@
             background: #f7f7f7;
             border: 2px solid transparent;
             cursor: pointer;
-            transition: .2s ease;
+            transition: 0.2s ease;
         }
-        .option:hover { border-color: #f0b1b1; }
-        .option input { width: 18px; height: 18px; }
+
+        .option:hover {
+            border-color: #f0b1b1;
+        }
+
+        .option input {
+            width: 18px;
+            height: 18px;
+        }
+
         .option.selected {
             background: #fff3f3;
             border-color: #e67f7f;
         }
-        .submit-btn, .back-btn, .reset-btn {
+
+        .submit-btn,
+        .back-btn,
+        .reset-btn {
             width: 100%;
             border: none;
             border-radius: 18px;
@@ -73,38 +92,53 @@
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: .2s ease;
+            transition: 0.2s ease;
         }
+
         .submit-btn {
             background: #e27777;
             color: #fff;
             margin-top: 14px;
         }
-        .submit-btn:hover, .back-btn:hover, .reset-btn:hover { opacity: .92; }
+
+        .submit-btn:hover,
+        .back-btn:hover,
+        .reset-btn:hover {
+            opacity: 0.92;
+        }
+
         .submit-btn:disabled {
-            opacity: .55;
+            opacity: 0.55;
             cursor: not-allowed;
         }
+
         .actions {
             display: flex;
             gap: 14px;
             margin-top: 24px;
         }
+
         .back-btn {
             background: #f3d8d8;
             color: #8c5151;
         }
+
         .reset-btn {
             background: #e27777;
             color: #fff;
         }
-        .hidden { display: none; }
+
+        .hidden {
+            display: none;
+        }
+
         .result-top {
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #f0eeee;
             margin-bottom: 24px;
         }
+
         .level-badge {
             display: inline-block;
             margin: 14px auto 10px;
@@ -115,65 +149,77 @@
             font-weight: 800;
             font-size: 18px;
         }
+
         .score {
             font-size: 44px;
             font-weight: 800;
             color: #e27777;
             margin: 6px 0;
         }
+
         .desc {
             color: #555;
             line-height: 1.8;
             font-size: 16px;
         }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             margin-top: 22px;
         }
+
         .mini-card {
             background: #faf7f7;
             border-radius: 18px;
             padding: 18px;
         }
+
         .mini-card h3 {
             margin: 0 0 8px;
             font-size: 16px;
             color: #333;
         }
+
         .mini-card p {
             margin: 0;
             color: #666;
             line-height: 1.8;
             font-size: 14px;
         }
+
         .list-box {
             margin-top: 22px;
             background: #faf7f7;
             border-radius: 18px;
             padding: 18px 20px;
         }
+
         .list-box h3 {
             margin: 0 0 12px;
             font-size: 17px;
         }
+
         .list-box ul {
             margin: 0;
             padding-left: 20px;
             line-height: 1.9;
             color: #555;
         }
+
         .meta {
             margin-top: 18px;
             color: #999;
             font-size: 13px;
             text-align: center;
         }
+
         .top-link {
             text-align: right;
             margin-bottom: 12px;
         }
+
         .top-link button {
             border: none;
             background: transparent;
@@ -181,11 +227,24 @@
             font-size: 14px;
             cursor: pointer;
         }
+
         @media (max-width: 700px) {
-            h1 { font-size: 30px; }
-            .card { padding: 24px 16px; border-radius: 20px; }
-            .grid { grid-template-columns: 1fr; }
-            .actions { flex-direction: column; }
+            h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 24px 16px;
+                border-radius: 20px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -196,10 +255,12 @@
     </div>
 
     <section id="quizPage" class="card hidden">
-        <h1>恋爱忍耐度测试</h1>
-        <div class="sub">通过你闹情绪、哭、发脾气时，对方的真实反应，测试他对你的忍耐程度</div>
+        <h1>恋爱回应力测试</h1>
+        <div class="sub">
+            不是看 TA 能忍你多久，而是看当关系里出现情绪、分歧、需要陪伴和安全感时，TA 会如何回应你
+        </div>
         <form id="quizForm"></form>
-        <button id="submitBtn" class="submit-btn">提交测试</button>
+        <button id="submitBtn" class="submit-btn" type="button">提交测试</button>
     </section>
 
     <section id="resultPage" class="card hidden">
@@ -240,78 +301,94 @@
 </div>
 
 <script>
-    const STORAGE_KEY = 'loveToleranceLatestReport_v1';
+    const STORAGE_KEY = 'loveResponseLatestReport_v1';
 
     const questions = [
-        { title: '1. 你哭了的时候，对方会？', options: ['立刻心疼哄你，抱紧你', '有点慌，轻声安慰', '不耐烦，让你别哭了', '无视，直接不理你'] },
-        { title: '2. 你因为小事发脾气，他会？', options: ['耐心包容，顺着你', '解释几句，不想吵架', '也生气，跟你对着吵', '直接冷暴力不说话'] },
-        { title: '3. 你闹脾气不回消息，他会？', options: ['疯狂找你，怕你出事', '发几条消息哄你', '等你消气再出现', '跟着消失，无所谓'] },
-        { title: '4. 你无理取闹提分手，他会？', options: ['拼命挽留，害怕失去你', '难过，劝你别乱说', '无奈，觉得你很烦', '顺着你，真的同意分'] },
-        { title: '5. 你失眠要他陪，他很累时会？', options: ['撑着困意陪你', '陪一会儿再睡', '让你自己乖乖睡', '嫌你烦，直接睡'] },
-        { title: '6. 你吃醋生气，他会？', options: ['立刻解释，给足安全感', '安抚你，说你多想', '觉得你小题大做', '怪你不信任他'] },
-        { title: '7. 你情绪崩溃发泄，他会？', options: ['抱住你，让你冷静', '陪着你，不说话', '躲开，等你自己好', '指责你情绪不稳定'] },
-        { title: '8. 你翻旧账吵架，他会？', options: ['耐心听，跟你和解', '无奈，但不凶你', '打断你，不想提', '发火，让你闭嘴'] },
-        { title: '9. 你故意冷淡对他，他会？', options: ['主动靠近，哄你开心', '小心翼翼问你怎么了', '也对你冷淡', '无所谓，不在乎'] },
-        { title: '10. 你生病作闹要照顾，他会？', options: ['心疼照顾，寸步不离', '提醒你吃药喝水', '让你自己多休息', '觉得你事多麻烦'] },
-        { title: '11. 你晚回消息让他担心，你闹时他会？', options: ['只担心你，不怪你', '有点生气但原谅你', '指责你不懂事', '直接不理你'] },
-        { title: '12. 你在他忙的时候打扰他，他会？', options: ['抽空回你，怕你失落', '忙完立刻找你', '嫌你烦，让你别闹', '直接挂电话不回'] },
-        { title: '13. 你委屈掉眼泪，他会？', options: ['心疼到不知所措', '擦你眼泪，安慰你', '叹气，无动于衷', '嫌你矫情，让你收住'] },
-        { title: '14. 你吵架说狠话伤他，他会？', options: ['难过但不怪你', '伤心但依然让着你', '也说狠话回击你', '彻底心寒，想放弃'] },
-        { title: '15. 你作到他很累，他会？', options: ['依然舍不得对你凶', '默默忍受，不爆发', '跟你摊牌，说受不了', '直接离开，不回头'] },
-        { title: '16. 你任性打乱他的计划，他会？', options: ['顺着你，以你为先', '无奈接受，陪你', '不开心，但忍了', '发火，怪你不懂事'] },
-        { title: '17. 你情绪反复，一天闹好几次，他会？', options: ['一直耐心，不放弃你', '累但依然哄你', '开始敷衍，懒得理', '崩溃，跟你决裂'] },
-        { title: '18. 你闹脾气挂他电话，他会？', options: ['立刻打回来，疯狂找你', '等一下再打给你', '不打，等你打回去', '也生气，再也不打'] },
-        { title: '19. 你因为没安全感逼他证明爱你，他会？', options: ['尽全力给你安全感', '尽量配合你', '觉得你烦，不想配合', '拒绝，说你病态'] },
-        { title: '20. 你把他作到极限，他最后会？', options: ['依然爱你，选择包容', '难过，但不离开', '心死，慢慢冷淡', '彻底放手，不再回头'] }
+        { title: '1. 当你情绪低落、明显不开心时，对方通常会？', options: ['第一时间察觉并主动安慰你', '会关心你，但需要你先开口', '知道你不开心，但不知道怎么接', '觉得这是你自己的事，不太回应'] },
+        { title: '2. 你们因为小事有点不愉快时，对方会？', options: ['愿意先缓和气氛，再和你好好说', '会解释自己的想法，但语气还算平和', '容易变得不耐烦，各说各话', '直接冷下来，不想沟通'] },
+        { title: '3. 你一时不想回消息、想自己静一静时，对方会？', options: ['会关心你的状态，并留出空间', '会问你怎么了，等你想说时再聊', '会有点介意，但不太处理', '也跟着消失，完全不在意'] },
+        { title: '4. 你在争执中说出“要不算了”这类气话时，对方会？', options: ['先安抚你的情绪，再认真确认你的真实想法', '会难过，但还是愿意挽回和沟通', '觉得你总拿关系说事，很疲惫', '顺势结束，不想再谈'] },
+        { title: '5. 你状态不好、想让他多陪陪你时，对方会？', options: ['主动腾出时间陪你，让你安心', '会陪你一会儿，并安顿好你', '会安慰你，但更希望你自己调整', '觉得你太依赖，回应很少'] },
+        { title: '6. 你因为没有安全感而有些敏感时，对方会？', options: ['认真解释并主动给你安全感', '会安抚你，但方式比较有限', '会觉得你想太多，不太想解释', '会反过来指责你不信任他'] },
+        { title: '7. 你情绪一下子上来、说话比较冲时，对方会？', options: ['先接住你的情绪，等你缓下来再聊', '会陪着你，但不太知道怎么安抚', '会先躲开，等事情过去', '会直接反击，让冲突升级'] },
+        { title: '8. 你提起之前没解决好的旧问题时，对方会？', options: ['愿意听你讲完，并一起处理', '会有些无奈，但还是会回应', '明显不想再提，想赶快结束', '很抗拒，甚至直接发火'] },
+        { title: '9. 当你变得有点冷淡时，对方会？', options: ['主动靠近你，想弄清原因', '会小心试探，问你是不是有心事', '也会跟着疏远，减少互动', '无所谓，你冷不冷都一样'] },
+        { title: '10. 你身体不舒服、状态差时，对方会？', options: ['会主动照顾你，行动上很到位', '会提醒你休息、吃药、照顾自己', '会表达关心，但做得不多', '觉得你只是小题大做'] },
+        { title: '11. 你让他担心了，比如很晚才回复时，对方会？', options: ['先确认你是否安全，再和你沟通', '会有情绪，但还是以关心为主', '会直接埋怨你不懂事', '干脆不再管你'] },
+        { title: '12. 他正忙的时候你联系他，对方通常会？', options: ['会尽量回应你，怕你失落', '会先告诉你在忙，之后再认真回复', '会显得有点烦躁，但还是回你', '直接不接不回，也不解释'] },
+        { title: '13. 当你感到委屈甚至掉眼泪时，对方会？', options: ['会明显心疼你，认真哄你', '会安慰你，尽量让你平静下来', '会有点不知所措，只想赶快结束', '会觉得你太情绪化'] },
+        { title: '14. 吵架时你说了比较重的话，对方会？', options: ['虽然受伤，但还是愿意和你修复关系', '会难过，也会表达自己的感受', '会立刻用重话回击', '会因此彻底关上心门'] },
+        { title: '15. 当关系进入反复拉扯期，对方会？', options: ['愿意一起找办法改善，而不是只忍耐', '会继续维持关系，但明显会累', '会越来越敷衍，投入下降', '会直接退出，不想再消耗'] },
+        { title: '16. 你的安排临时有变化、影响到他的计划时，对方会？', options: ['愿意协调配合，优先解决问题', '会有点无奈，但总体能接受', '表面答应，心里明显不高兴', '会直接发脾气，怪你添麻烦'] },
+        { title: '17. 你最近状态反复、情绪起伏比较大时，对方会？', options: ['持续稳定地陪着你，不轻易放弃', '会累，但还是尽量照顾你', '开始减少回应，变得敷衍', '承受不了，想赶快抽离'] },
+        { title: '18. 你们聊得不愉快时，你先挂了电话，对方会？', options: ['会主动再联系你，把话说开', '会等一会儿，再来找你', '会等你先回头', '也会赌气，不再联系'] },
+        { title: '19. 你想确认自己在他心里的位置时，对方会？', options: ['愿意认真表达爱和承诺，让你安心', '会用自己的方式回应你', '会觉得这种确认很多余', '会拒绝回应，觉得你在施压'] },
+        { title: '20. 当关系遇到真正的压力和磨合时，对方最后更像是？', options: ['会坚定留下来，一起解决问题', '会摇摆和疲惫，但仍不轻易放弃', '容易慢慢冷淡，减少投入', '会选择抽身，结束关系'] }
     ];
 
     const dimensions = {
-        情绪接纳: [0, 6, 12, 16],
-        冲突包容: [1, 3, 7, 13, 14, 19],
-        安全感投入: [2, 5, 8, 10, 17, 18],
-        日常陪伴: [4, 9, 11, 15]
+        情绪回应: [0, 6, 12, 16],
+        冲突修复: [1, 3, 7, 13, 14, 19],
+        安全感建立: [2, 5, 8, 10, 17, 18],
+        陪伴与投入: [4, 9, 11, 15]
     };
 
     const resultRules = [
         {
             min: 70,
             max: 80,
-            level: '超高忍耐度型',
-            title: '他对你的情绪承接能力很强',
-            desc: '对方在大多数情况下都愿意哄你、解释你、包容你，说明他在关系里投入度高，也愿意维持稳定感。这个结果不等于可以无限消耗，而是代表他当前对这段关系有较强的耐心和责任感。',
-            summary: '他的第一反应通常是安抚、解释、靠近你，而不是躲开或对抗。整体属于高投入、高包容的伴侣类型。',
-            attention: '高忍耐度不代表没有边界。你更需要珍惜他的耐心，学会在情绪过去后进行修复和感谢。',
-            conclusions: ['对方当前情感投入高，愿意承担关系中的情绪成本', '遇到矛盾时，他更偏向安抚和维系，而非逃避', '这段关系具备较强稳定性，但也要防止长期单向消耗']
+            level: '高回应力型',
+            title: '他在关系里有很强的承接与修复能力',
+            desc: '对方在大多数情况下都愿意靠近你、理解你、安抚你，也愿意在出现问题后主动修复关系。这说明他不仅有感情投入，也有较强的关系经营意识。',
+            summary: '他的第一反应通常是沟通、安抚和靠近，而不是逃避、冷处理或对抗。',
+            attention: '高回应力不代表没有边界。关系最好的状态，不是一个人一直扛，而是两个人都愿意把彼此放在心上。',
+            conclusions: [
+                '对方整体投入度较高，愿意经营这段关系',
+                '出现矛盾时，更偏向修复而不是抽离',
+                '这段关系具备较强的稳定潜力'
+            ]
         },
         {
             min: 55,
             max: 69,
-            level: '中高忍耐度型',
-            title: '他愿意包容你，但也会累',
-            desc: '对方整体上是愿意哄你、让着你、尽量维持关系的，但在频繁争执、被误解或长期情绪压力下，他也会出现疲惫、退缩或者敷衍。',
-            summary: '他不是不在乎，而是更需要节奏和空间。只要关系不持续失衡，他通常愿意继续沟通。',
-            attention: '你们的关系关键不在“爱不爱”，而在“能不能建立更健康的互动方式”。',
-            conclusions: ['对方有包容力，但承压上限有限', '关系可持续性取决于双方是否愿意调整相处方式', '适合增加正向反馈，减少试探和情绪拉扯']
+            level: '较高回应力型',
+            title: '他愿意在意你的感受，但也需要喘息空间',
+            desc: '对方整体是愿意回应你的，也希望关系往好的方向发展。但当冲突频繁、情绪密度太高时，他也会感觉疲惫，偶尔出现退缩或敷衍。',
+            summary: '他不是不在乎，而是在乎的同时，也很需要轻松和秩序感。',
+            attention: '你们的关键，不是去验证谁更爱，而是建立更舒服、更稳定的互动方式。',
+            conclusions: [
+                '对方有一定包容度和投入意愿',
+                '关系维系能力不错，但承压并非无限',
+                '减少拉扯感，会让这段关系更顺'
+            ]
         },
         {
             min: 40,
             max: 54,
-            level: '中等忍耐度型',
-            title: '他会忍，但不会一直忍',
-            desc: '对方对你的情绪并非完全无感，但更多是阶段性忍让。遇到问题时，他可能会先解释、再退让，最后转为冷淡、自保或者减少投入。',
-            summary: '这是典型的“会维持关系，但不擅长承接高频情绪”的类型。爱可能有，但耐心并不稳定。',
-            attention: '如果你们已经反复陷入拉扯，建议尽快改善沟通，不然关系容易慢慢降温。',
-            conclusions: ['对方并非完全不在乎，但他的耐心存在明显阈值', '关系中容易出现累积委屈和情绪账单', '越是高频测试，越容易把对方推向疏离']
+            level: '波动回应型',
+            title: '他会回应，但稳定性不足',
+            desc: '对方并不是完全不在乎你，只是当关系进入情绪压力或反复磨合时，他的回应会明显波动，容易从解释转向疲惫、从靠近转向退后。',
+            summary: '他更像是“有感情，但不太擅长处理高浓度关系问题”的类型。',
+            attention: '如果你们长期陷入反复拉扯，关系容易慢慢降温，而不是突然结束。',
+            conclusions: [
+                '对方不是没感情，但修复力有限',
+                '关系中容易积累委屈和误解',
+                '越缺少有效沟通，越容易走向疏离'
+            ]
         },
         {
             min: 20,
             max: 39,
-            level: '低忍耐度型',
-            title: '他对情绪压力的承受能力偏低',
-            desc: '对方在你情绪化、需要安抚或发生冲突时，更容易表现出不耐烦、回避、防御甚至反击。这说明他对关系中的情绪劳动意愿较低，或者已经处于明显疲惫状态。',
-            summary: '他更容易把你的情绪理解成麻烦，而不是求助信号，因此在关键时刻的回应质量偏低。',
-            attention: '这个结果需要重视。若关系长期如此，你会越来越缺安全感，他也会越来越想逃。',
-            conclusions: ['对方承接情绪的意愿偏弱', '关系中的冲突恢复力较差', '需要判断这是性格使然，还是关系已经严重透支']
+            level: '低回应力型',
+            title: '他在关系中的承接意愿与能力都偏弱',
+            desc: '当关系里出现情绪、需求或冲突时，对方更容易选择回避、防御、冷处理，甚至直接抽离。这说明他当前要么投入不足，要么已经对这段关系缺乏耐心。',
+            summary: '他更容易把关系压力视为负担，而不是一起面对的问题。',
+            attention: '这个结果值得认真看待。长期处在这样的互动里，你会越来越缺安全感，他也会越来越想离开。',
+            conclusions: [
+                '对方对关系压力的承接能力偏低',
+                '冲突后的修复质量较弱',
+                '需要判断是关系失衡，还是对方本身就不擅长亲密关系经营'
+            ]
         }
     ];
 
@@ -325,16 +402,16 @@
 
     function renderQuiz() {
         quizForm.innerHTML = questions.map((q, qIndex) => `
-        <div class="question">
-          <div class="q-title">${q.title}</div>
-          ${q.options.map((op, opIndex) => `
-            <label class="option">
-              <input type="radio" name="q${qIndex}" value="${4 - opIndex}" />
-              <span>${op}</span>
-            </label>
-          `).join('')}
-        </div>
-      `).join('');
+            <div class="question">
+                <div class="q-title">${q.title}</div>
+                ${q.options.map((op, opIndex) => `
+                    <label class="option">
+                        <input type="radio" name="q${qIndex}" value="${4 - opIndex}" />
+                        <span>${op}</span>
+                    </label>
+                `).join('')}
+            </div>
+        `).join('');
 
         quizForm.querySelectorAll('.option input').forEach(input => {
             input.addEventListener('change', () => {
@@ -421,7 +498,7 @@
         if (!raw) return null;
         try {
             return JSON.parse(raw);
-        } catch {
+        } catch (e) {
             return null;
         }
     }
@@ -432,6 +509,7 @@
             alert('请先完成全部 20 道题，再提交测试。');
             return;
         }
+
         const report = buildReport(answers);
         renderReport(report);
         showReport();
@@ -466,6 +544,7 @@
 
     function init() {
         renderQuiz();
+
         const savedReport = loadSavedReport();
         if (savedReport) {
             viewSavedReportBtn.classList.remove('hidden');
